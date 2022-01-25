@@ -24,7 +24,7 @@ const server = express();
 
 
 server.use(session({
-  name:"monkey",
+  name:"chocolatechip",
   secret:true,
   saveUninitialized: false,
   resave: false,
