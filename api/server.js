@@ -17,28 +17,28 @@ const cors = require("cors");
 
   const usersRouter = require("./users/users-router")
   const authRouter = require("./auth/auth-router")
-  const knex = require("../data/db-config")
   const session = require("express-session")
   const Store = require("connect-session-knex")(session)
+  const knex = require("../data/db-config")
 const server = express();
 
 
 server.use(session({
   name:"chocolatechip",
-  secret:true,
+  secret:"shh",
   saveUninitialized: false,
   resave: false,
   store: new Store({
     knex,
     createTable:true,
-    clearInterval: 1000 * 600 * 600,
+    clearInterval: 1000 * 60 * 60,
     tablename:"sessions",
     sidfiledname:"sid"
   }),
   cookie:{
-    maxAge: 1000 * 600 * 600, 
+    maxAge: 1000 * 60 * 60,  
     secure:false,
-    httpOnly: true
+    httpOnly: true,
   }
 
 }))
